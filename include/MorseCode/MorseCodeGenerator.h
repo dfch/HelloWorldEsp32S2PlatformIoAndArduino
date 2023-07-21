@@ -18,13 +18,16 @@
         private:
             const unsigned short DahDitRatio = 3;
 
+            // Spacing between Dits/Dahs is 1 unit.
+            const unsigned short DitSpacing = 1;
+
             // A character spacing is 3 units, but as we already inserted a single unit after the 
             // last character, we only need 2 more units.
-            const unsigned short CharacterSpacing = 2;
+            const unsigned short CharacterSpacing = 3 - DitSpacing;
 
             // A word spacing is 7 units, but as we already inserted a character spacing with 
             // 3 units after the last character, we only need 4 more units.
-            const unsigned short WordSpacing = 4;
+            const unsigned short WordSpacing = 7 - CharacterSpacing - DitSpacing;
 
             const char SPACE = ' ';
 

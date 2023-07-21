@@ -21,11 +21,11 @@ void MorseCodeGenerator::Send(std::string& value)
         {
             case Dit:
                 configuration->Transmit(configuration->DitLengthMs);
-                configuration->NoTransmit(configuration->DitLengthMs);
+                configuration->NoTransmit(DitSpacing * configuration->DitLengthMs);
                 break;
             case Dah:
                 configuration->Transmit(DahDitRatio * configuration->DitLengthMs);
-                configuration->NoTransmit(configuration->DitLengthMs);
+                configuration->NoTransmit(DitSpacing * configuration->DitLengthMs);
                 break;
             case Char:
                 configuration->NoTransmit(CharacterSpacing * configuration->DitLengthMs);
@@ -55,7 +55,7 @@ std::vector<MorseCodeSignal> MorseCodeGenerator::Serialise(std::string& value)
     // Approximate the final vector size.
     result.reserve(trimmedValue.length() * (3 + CharacterSpacing) + WordSpacing);
     
-    for(const auto c : value)
+    for(const auto c : trimmedValue)
     {
         if(map.find(c) == map.end()) continue;
 
