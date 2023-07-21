@@ -5,6 +5,12 @@
 
 #include "MorseCode/MorseCodeGenerator.h"
 
+MorseCodeGenerator::MorseCodeGenerator(const std::shared_ptr<MorseCodeGeneratorConfiguration>& cfg)
+    : configuration(cfg)
+{
+    // N/A
+}
+
 void MorseCodeGenerator::Send(std::string& value)
 {
     auto result = Serialise(value);
@@ -66,10 +72,4 @@ std::vector<MorseCodeSignal> MorseCodeGenerator::Serialise(std::string& value)
     result.push_back(Word);
 
     return result;
-}
-
-MorseCodeGenerator::MorseCodeGenerator(const std::shared_ptr<MorseCodeGeneratorConfiguration>& cfg)
-    : configuration(cfg)
-{
-    // N/A
 }
