@@ -15,16 +15,18 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
 
   auto configuration = std::make_shared<MorseCodeGeneratorConfiguration>();
-  configuration->Transmit = [](int ms) 
+  bool flag = false;
+  configuration->Transmit = [flag](int ms) mutable
   { 
-    digitalWrite(LED_BUILTIN, HIGH); 
+    if(!flag) digitalWrite(LED_BUILTIN, HIGH); 
     delay(ms);
     digitalWrite(LED_BUILTIN, LOW); 
   };
-  configuration->NoTransmit = [](int ms) 
+  configuration->NoTransmit = [flag](int ms) mutable
   { 
-    digitalWrite(LED_BUILTIN, LOW); 
+    if(flag) digitalWrite(LED_BUILTIN, LOW); 
     delay(ms);
+    flag = false;
   };
 
   generator = std::make_shared<MorseCodeGenerator>(configuration);
@@ -32,7 +34,7 @@ void setup()
 
 void loop() 
 {
-  Serial.print(message.c_str());
+  Serial.println(message.c_str());
 
   generator->Send(message);
 }
