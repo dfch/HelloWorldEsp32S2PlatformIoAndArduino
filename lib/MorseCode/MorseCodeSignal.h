@@ -3,4 +3,12 @@
 * See LICENSE file in the project root for full license information.
 */
 
-#include "MorseCode/MorseCodeSignal.h"
+#pragma once
+
+enum MorseCodeSignal
+{
+    Dit,
+    Dah,
+    Char,
+    Word,
+};
