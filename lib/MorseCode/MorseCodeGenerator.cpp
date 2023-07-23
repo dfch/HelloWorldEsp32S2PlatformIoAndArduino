@@ -50,7 +50,7 @@ std::vector<MorseCodeSignal> MorseCodeGenerator::Serialise(std::string& value)
 
     // Convert to lower case (even harder to believe it is not part of std::string).
     transform(trimmedValue.begin(), trimmedValue.end(), trimmedValue.begin(), 
-        [](unsigned char c){ return std::tolower(c); });
+        [](unsigned char c){ return ::tolower(c); });
     
     // Approximate the final vector size.
     result.reserve(trimmedValue.length() * (3 + CharacterSpacing) + WordSpacing);

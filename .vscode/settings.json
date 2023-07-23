@@ -50,5 +50,6 @@
         "typeinfo": "cpp",
         "chrono": "cpp",
         "ratio": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "C:/src/HelloWorldEsp32S2PlatformIoAndArduino/.pio/libdeps/sparkfun_esp32s2_thing_plus/Unity"
 }

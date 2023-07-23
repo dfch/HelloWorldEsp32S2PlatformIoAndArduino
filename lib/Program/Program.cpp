@@ -3,7 +3,9 @@
 * See LICENSE file in the project root for full license information.
 */
 
-#include <Program.h>
+#if defined(ARDUINO)
+
+#include "Program.h"
 
 Program::Program()
 {
@@ -49,3 +51,5 @@ std::shared_ptr<Program> Program::Factory::Create()
 {
     return std::make_shared<Program>();
 }
+
+#endif
