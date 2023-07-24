@@ -17,7 +17,7 @@ void tearDown(void)
     // N/A
 }
 
-void SerialiseReturnsCorrectVectorLength(void)
+void SerialiseReturnsCorrectVectorSize(void)
 {
     // Arrange
     auto configuration = std::make_shared<MorseCodeGeneratorConfiguration>();
@@ -75,7 +75,7 @@ int runUnityTests(void)
 {
     UNITY_BEGIN();
 
-    RUN_TEST(SerialiseReturnsCorrectVectorLength);
+    RUN_TEST(SerialiseReturnsCorrectVectorSize);
     RUN_TEST(SerialiseReturnsCorrectVectorContent);
 
     return UNITY_END();
