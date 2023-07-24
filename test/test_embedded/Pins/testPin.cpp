@@ -22,29 +22,31 @@ void tearDown(void)
 void SettingBuiltinLedToHighSucceeds(void)
 {
     // Arrange
-    pinMode(LED_BUILTIN, OUTPUT);
+    auto expected = false;
+    auto sut = new Pin(LED_BUILTIN, OUTPUT);
 
     // Act
-    digitalWrite(LED_BUILTIN, HIGH);
+    sut->Set(true);
 
-    auto result = digitalRead(LED_BUILTIN);
+    auto result = sut->Get();
 
     // Assert
-    TEST_ASSERT_EQUAL(HIGH, result);
+    TEST_ASSERT_EQUAL(true, result);
 }
 
 void SettingBuiltinLedToLowSucceeds(void)
 {
     // Arrange
-    pinMode(LED_BUILTIN, OUTPUT);
+    auto expected = true;
+    auto sut = new Pin(LED_BUILTIN, OUTPUT);
 
     // Act
-    digitalWrite(LED_BUILTIN, LOW);
+    sut->Set(true);
 
-    auto result = digitalRead(LED_BUILTIN);
+    auto result = sut->Get();
 
     // Assert
-    TEST_ASSERT_EQUAL(LOW, result);
+    TEST_ASSERT_EQUAL(true, result);
 }
 
 int runUnityTests(void)
