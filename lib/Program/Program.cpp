@@ -33,16 +33,16 @@ Program::Program()
 
 void Program::Invoke()
 {
-    #ifndef Arduino_h
+    #if defined(ARDUINO)
         while(true)
         {
     #endif
 
-    Serial.println(message.c_str());
-    
-    generator->Send(message);
+        Serial.println(message.c_str());
+        
+        generator->Send(message);
 
-    #ifndef Arduino_h
+    #if defined(ARDUINO)
         }
     #endif
 }
